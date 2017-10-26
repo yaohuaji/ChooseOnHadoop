@@ -69,6 +69,7 @@ def resolve_conf(dt):
 #Python模块的入口：main函数
 if __name__ == '__main__':
     #使用调度模块传入的两个参数，第一个为可执行的type,第二个为日期
+    #导出模块还未测试
     hqls = resolve_conf(sys.argv[0],sys.argv[1])
     for hql in hqls:
         HiveUtil.execute_shell(hql) 
