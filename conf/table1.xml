@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+	<sqoop-shell type="import">
+		<param key="connect">jdbc:mysql://10.175.164.83:3306/choose</param>
+		<param key="username">root</param>
+		<param key="password">root</param>
+		<!-- <param key="table">choose</param> -->
+		<param key="query">"select * from choose where date_format(choose_time,'%Y-%c-%d') \$CONDITIONS"</param>
+		<param key="target-dir">/user/hive/warehouse/choose</param>
+		<param key="hive-import"></param>
+		<param key="hive-table">choose</param>
+		<param key="hive-partition-key">dt</param>
+		<param key="hive-partition-value">\$dt</param>
+		<param key="m">5</param>
+		<param key="hive-overwrite"></param>
+		<param key="hive-delims-replacement">'\\t'</param>
+		<param key="null-string">'\\N'</param>
+		<param key="null-non-string">'\\N'</param>
+		<param key="split-by">choose_no</param>
+		<!-- <param key="map-column-hive">'SubTotal=DOUBLE,PKId=BIGINT'</param> -->
+		
+	</sqoop-shell>
+</root>

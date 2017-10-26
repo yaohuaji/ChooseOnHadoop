@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	
+	<!-- 全量导入 -->
+	<task type="all">
+		<table>table1</table>
+		<!-- <table>table2</table>
+		<table>table3</table> -->
+	</task>
+	
+	<!-- 增量导入 -->
+	<!-- <task type="add">
+		<table>table1</table>
+		<table>table2</table>
+		<table>table3</table>
+	</task> -->
+</root>

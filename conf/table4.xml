@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+	<sqoop-shell type="export">
+		<param key="connect">jdbc:mysql://localhost:3306/resultDB</param>
+		<param key="username">root</param>
+		<param key="password">root</param>
+		<param key="target-dir">/user/hive/warehouse/choose</param>
+		<param key="m">5</param>
+		<param key="null-string">'\\N'</param>
+		<param key="null-non-string">'\\N'</param>
+		<param key="split-by">choose_no</param>
+	</sqoop-shell>
+</root>

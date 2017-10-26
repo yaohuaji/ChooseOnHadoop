@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<Job type="analysis">
+		<hql>
+			insert overwrite table orders partition(dt)
+			select
+			PKId,
+			CustomerId,
+			Status,
+			OrderDate,
+			ShippingHandling,
+			ShipToName,
+			ShipToAddressId,
+			SubTotal,
+			Tax,
+			CreditCardType,
+			CreditCardNumber,
+			ExpirationDate,
+			NameOnCard,
+			ApprovalCode,
+			ModifyDate,
+			ModifyDate,
+			<!-- from (select * from(select * from Orders where dt = \$dt union all select * from Orders where dt < \$dt) t1 distribute by ModifyDate sort by PKId) t2 
+			where rownum(PKId) = 1 -->
+		</hql>
+	</Job>
+	<Job type="et1_db">
+		<hql>数据清洗的HQL</hql>
+	</Job>
+</root>
