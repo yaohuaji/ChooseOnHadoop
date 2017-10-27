@@ -1,3 +1,4 @@
+# -*- coding:UTF-8 -*-
 #解析配置文件
 import sys
 from xml.etree import ElementTree
@@ -34,9 +35,10 @@ def resolve_conf(type,dt):
 
 if  __name__ == '__main__':
     #使用调度模块传入的两个参数，第一个为可执行的type,第二个为日期
-    hqls = resolve_conf(sys.argv[0], sys.argv[1])
+    hqls = resolve_conf("analysis","1")
     
     for hql in hqls:
+        print(hql)
         HiveUtil.execute_shell(hql)
 
 

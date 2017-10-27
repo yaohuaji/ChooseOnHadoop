@@ -1,3 +1,4 @@
+# -*- coding:UTF-8 -*-
 import commands
 
 from com.utls.pro_env import HIVE_PATH
@@ -21,6 +22,7 @@ class HiveUtil(object):
         else:
             print "success"
         output = str(output).split("\n")
+        print(output)
         return output
 
             
