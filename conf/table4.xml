@@ -2,13 +2,15 @@
 
 <root>
 	<sqoop-shell type="export">
-		<param key="connect">jdbc:mysql://localhost:3306/resultDB</param>
+		<param key="connect">jdbc:mysql://10.175.164.83:3306/resultdb</param>
 		<param key="username">root</param>
 		<param key="password">root</param>
-		<param key="target-dir">/user/hive/warehouse/choose</param>
+		<param key="export-dir">'/user/hive/warehouse/choose/dt=$dt/part-m-00000'</param>
 		<param key="m">5</param>
 		<param key="null-string">'\\N'</param>
 		<param key="null-non-string">'\\N'</param>
-		<param key="split-by">choose_no</param>
+		<!-- <param key="split-by">student_no</param> -->
+		<param key="fields-terminated-by">','</param>
+		<param key="table">choose</param>
 	</sqoop-shell>
 </root>

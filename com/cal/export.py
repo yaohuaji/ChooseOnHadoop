@@ -2,11 +2,10 @@
 
 from distutils import command
 import sys
-from xml.etree.ElementTree import ElementTree
+from xml.etree import ElementTree
 
-from com.cal.exe_hql import resolve_conf
 from com.utls.pro_env import PROJECT_CONF_DIR
-from com.utls.hive import HiveUtil
+from com.utls.sqoop import SqoopUtil
 
 
 #其中dt为昨天的日期，将由调度模块传入
@@ -53,26 +52,34 @@ def resolve_conf(dt):
                 cmap[key] = value
                 
                 #首先组装成sqoop命令头
-                command = "sqoop " + "--" + sqoop_cmd_type
+                command = "sqoop " + " " + sqoop_cmd_type
                 
                 #迭代将param的信息拼装成字符串
                 for key in cmap.keys() :
                     value = cmap[key]
                     if(value == None or value == "" or value == " ") :
                          value = ""
+                    if(key == "export-dir"):
+                        value = value.replace("$dt", dt)
                      #拼装成命令
-                    command += "--" + key + " " + value + "\n"
+                    command += " --" + key + " " + value
              #将命令加入待执行命令集合
             cmds.append(command)
              
     return cmds
 #Python模块的入口：main函数
 if __name__ == '__main__':
-    #使用调度模块传入的两个参数，第一个为可执行的type,第二个为日期
-    #导出模块还未测试
-    hqls = resolve_conf(sys.argv[0],sys.argv[1])
-    for hql in hqls:
-        HiveUtil.execute_shell(hql) 
+#     #使用调度模块传入的两个参数，第一个为可执行的type,第二个为日期
+#     #导出模块还未测试
+#     hqls = resolve_conf(sys.argv[0],sys.argv[1])
+#     for hql in hqls:
+#         HiveUtil.execute_shell(hql) 
+    dt = '20171026'
+    cmds = resolve_conf(dt)
+    for i in range(len(cmds)):
+        cmd = cmds[i]
+        print(cmd)
+        SqoopUtil.execute_shell(cmd)
     
    
                  
