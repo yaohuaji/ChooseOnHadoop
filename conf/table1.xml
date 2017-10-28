@@ -12,12 +12,13 @@
 		<param key="hive-table">choose</param>
 		<param key="hive-partition-key">dt</param>
 		<param key="hive-partition-value">\$dt</param>
-		<param key="m">5</param>
+		<!-- <param key="m">5</param> -->
 		<param key="hive-overwrite"></param>
 		<param key="hive-delims-replacement">'\\t'</param>
 		<param key="null-string">'\\N'</param>
 		<param key="null-non-string">'\\N'</param>
 		<param key="split-by">choose_no</param>
+		<param key="fields-terminated-by">','</param>
 		<!-- <param key="map-column-hive">'SubTotal=DOUBLE,PKId=BIGINT'</param> -->
 		
 	</sqoop-shell>

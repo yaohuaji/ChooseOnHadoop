@@ -76,7 +76,7 @@ def resolve_conf(dt):
                          print(value)
                      # #将导入分区替换为传入的时间
                     if(key == "hive-partition-value") :
-                         value = value.replace("\$dt",dt)
+                        value = value.replace("\$dt",dt)
                      #拼装成命令
                     command += " --" + key + " " + value + " "
              #将命令加入待执行命令集合
@@ -95,6 +95,7 @@ if __name__ == '__main__' :
     #迭代集合，执行命令
     for i in range(len(cmds)) :
         cmd = cmds[i]
+        print(cmd)
         #执行导入过程
         SqoopUtil.execute_shell(cmd)
         
